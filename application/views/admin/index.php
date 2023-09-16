@@ -24,11 +24,11 @@
                     </div>
                     <div class="h-32 rounded-lg bg-gray-100 w-60">
                         <p class="text-xl ml-4 mt-2 font-medium">Jumlah Siswa</p>
-                        <p class="ml-4 mt-4 text-3xl font-semibold">1287</p>
+                        <p class="ml-4 mt-4 text-3xl font-semibold"><?php echo $siswa;?></p>
                     </div>
                     <div class="h-32 rounded-lg bg-gray-100 w-60">
                         <p class="text-xl ml-4 mt-2 font-medium">Jumlah Mapel</p>
-                        <p class="ml-4 mt-4 text-3xl font-semibold">9</p>
+                        <p class="ml-4 mt-4 text-3xl font-semibold"><?php echo $mapel;?></p>
                     </div>
                     <div class="h-32 rounded-lg bg-gray-100 w-60">
                         <p class="text-xl ml-4 mt-2 font-medium">Jumlah Guru</p>
