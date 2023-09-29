@@ -17,7 +17,7 @@
 
         <div class="container mt-12">
             <?php $this->load->view('components/navbar')?>
-            <div class="overflow-x-auto">
+            <div class="overflow-x-auto px-5">
                 <form action="<?php echo base_url('admin/aksi_tambah_siswa') ?>" enctype="multipart/form-data"
                     method="post">
                     <div class="max-full rounded border overflow-hidden shadow-lg">
@@ -64,6 +64,16 @@
                                         </option>
                                         <?php endforeach ?>
                                     </select>
+                                </div>
+                                <div class="mb-4">
+                                    <label class="block text-gray-700 text-sm font-bold mb-2" for="nama">
+                                        Foto
+                                    </label>
+                                    <input
+                                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                        type="file" name="foto" />
+                                </div>
+                                <div class="mb-4">
                                 </div>
                                 <button type="submit"
                                     class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-2/6">
