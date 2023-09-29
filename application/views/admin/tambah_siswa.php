@@ -12,11 +12,11 @@
 <body>
     <div class="flex">
         <div>
-            <?php $this->load->view('components/sidebar')?>
+            <?php $this->load->view('admin/components/sidebar')?>
         </div>
 
         <div class="container mt-12">
-            <?php $this->load->view('components/navbar')?>
+            <?php $this->load->view('admin/components/navbar')?>
             <div class="overflow-x-auto px-5">
                 <form action="<?php echo base_url('admin/aksi_tambah_siswa') ?>" enctype="multipart/form-data"
                     method="post">

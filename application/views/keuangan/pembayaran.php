@@ -11,16 +11,16 @@
 <body>
     <div class="flex">
         <div>
-            <?php $this->load->view('admin/components/sidebar')?>
+            <?php $this->load->view('keuangan/components/sidebar')?>
         </div>
 
         <div class="container mt-12">
-            <?php $this->load->view('admin/components/navbar')?>
+            <?php $this->load->view('keuangan/components/navbar')?>
             <div class="overflow-x-auto px-5">
                 <div class="max-full rounded border overflow-hidden shadow-lg px-6 py-4">
-                    <a href="<?php echo base_url('admin/tambah_siswa')?>"
+                    <a href="<?php echo base_url('keuangan/tambah_siswa')?>"
                         class="inline-block rounded bg-sky-600 px-4 py-2 text-xs font-medium text-white hover:bg-sky-700">
-                        Tambah Siswa
+                        Tambah Pembayaran
                     </a>
                     <table class="divide-y-2 divide-gray-200 bg-white text-sm w-full px-2 mt-2">
                         <thead>
@@ -29,13 +29,13 @@
                                     No
                                 </th>
                                 <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 text-left">
-                                    Foto Siswa
-                                </th>
-                                <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 text-left">
                                     Nama Siswa
                                 </th>
                                 <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 text-left">
-                                    Kelas
+                                    Jenis Pembyaran
+                                </th>
+                                <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 text-left">
+                                    Total Pembayaran
                                 </th>
                                 <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
                                     Aksi
@@ -43,25 +43,24 @@
                                 <th class="px-4 py-2"></th>
                             </tr>
                         </thead>
-
                         <tbody class="divide-y divide-gray-200">
-                            <?php $no=0; foreach($siswa as $row): $no++ ?>
+                            <?php $no = 0; foreach($pembayaran as $row) : $no++ ?>
                             <tr>
                                 <td class="whitespace-nowrap px-4 py-2 text-gray-700"><?php echo $no ?></td>
                                 <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                                    <img src="<?php echo base_url('images/siswa/'.$row->foto) ?>" width="50">
+                                    <?php echo tampil_siswa_byid($row->id_siswa) ?>
                                 </td>
                                 <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                                    <?php echo $row->nama_siswa ?>
-                                </td>
+                                    <?php echo $row->jenis_pembayaran ?></td>
                                 <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                                    <?php echo tampil_full_kelas_byid($row->id_kelas) ?></td>
+                                    <?php echo convRupiah($row->total_pembayaran) ?>
+                                </td>
                                 <td class="whitespace-nowrap px-4 py-2 text-center">
-                                    <a href="<?php echo base_url('admin/ubah_siswa/').$row->id_siswa?>"
+                                    <a href="<?php echo base_url('keuangan/ubah_siswa/')?>"
                                         class="inline-block rounded bg-sky-600 px-4 py-2 text-xs font-medium text-white hover:bg-sky-700">
                                         Ubah
                                     </a>
-                                    <button onclick="hapus(<?php echo $row->id_siswa ?>)"
+                                    <button onclick="hapus(<?php echo '1' ?>)"
                                         class="inline-block rounded bg-red-600 px-4 py-2 text-xs font-medium text-white hover:bg-red-700">
                                         Hapus
                                     </button>
@@ -78,7 +77,7 @@
     function hapus(id) {
         var yes = confirm('Yakin Di Hapus?');
         if (yes == true) {
-            window.location.href = "<?php echo base_url('admin/hapus_siswa/')?>" + id;
+            window.location.href = "<?php echo base_url('keuangan/hapus_siswa/')?>" + id;
         }
     }
     </script>

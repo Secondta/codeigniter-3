@@ -11,11 +11,11 @@
 <body>
     <div class="flex">
         <div>
-            <?php $this->load->view('components/sidebar')?>
+            <?php $this->load->view('admin/components/sidebar')?>
         </div>
 
         <div class="container mt-12">
-            <?php $this->load->view('components/navbar')?>
+            <?php $this->load->view('admin/components/navbar')?>
             <div class="overflow-x-auto">
                 <div class="grid grid-cols-4 gap-4 w-full">
                     <div class="h-32 rounded-lg bg-gray-100 w-60">

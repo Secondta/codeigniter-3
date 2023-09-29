@@ -10,7 +10,7 @@ class Admin extends CI_Controller
 		$this->load->model('m_model');
 		$this->load->helper('my_helper');
 		$this->load->library('upload');
-        if ($this->session->userdata('logged_in')!=true) {
+        if ($this->session->userdata('logged_in') != true  || $this->session->userdata('role') != 'admin') {
             redirect(base_url().'auth');
         }
 	}
@@ -88,13 +88,13 @@ class Admin extends CI_Controller
 		$upload_path = './images/siswa/' . $file_name;
 
 		if (move_uploaded_file($file_temp, $upload_path)) {
-			$data = [
+			$data = array(
 				'foto' => $file_name,
 				'nama_siswa' => $this->input->post('nama'),
 				'nisn' => $this->input->post('nisn'),
 				'gender' => $this->input->post('gender'),
 				'id_kelas' => $this->input->post('kelas'),
-			];
+			);
 			$this->m_model->tambah_data('siswa', $data);
 			redirect(base_url('admin/siswa'));
 		} else {
@@ -176,10 +176,12 @@ class Admin extends CI_Controller
 	{
 		// Model det siswa by id
 		$siswa = $this->m_model->get_by_id('siswa', 'id_siswa', $id)->row();
+		// IF siswa ada
 		if ($siswa) {
+			// IF foto siswa bukan 'User.png'
 			if ($siswa->foto !== 'User.png') {
 				$file_path = './images/siswa/' . $siswa->foto;
-
+				
 				if (file_exists($file_path)) {
 					if (unlink($file_path)) {
 						// Hapus file berhasil menggunakan model delete
@@ -193,11 +195,13 @@ class Admin extends CI_Controller
 					// File tidak ditemukan
 					echo "File tidak ditemukan.";
 				}
+
 			} else {
-				// Jangan hapus file 'User.png'
+				// Tanpa hapus file 'User.png'
 				$this->m_model->delete('siswa', 'id_siswa', $id);
 				redirect(base_url('admin/siswa'));
 			}
+			
 		} else {
 			// Siswa tidak ditemukan
 			echo "Siswa tidak ditemukan.";
