@@ -22,6 +22,10 @@
                         class="inline-block rounded bg-sky-600 px-4 py-2 text-xs font-medium text-white hover:bg-sky-700">
                         Tambah Pembayaran
                     </a>
+                    <a href="<?php echo base_url('keuangan/export')?>"
+                        class="inline-block rounded bg-sky-600 px-4 py-2 text-xs font-medium text-white hover:bg-sky-700">
+                        Export Pembayaran
+                    </a>
                     <table class="divide-y-2 divide-gray-200 bg-white text-sm w-full px-2 mt-2">
                         <thead>
                             <tr>
@@ -48,7 +52,7 @@
                             <tr>
                                 <td class="whitespace-nowrap px-4 py-2 text-gray-700"><?php echo $no ?></td>
                                 <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                                    <?php echo tampil_siswa_byid($row->id_siswa) ?>
+                                    <?php echo tampil_gender_byid($row->id_siswa) ?>
                                 </td>
                                 <td class="whitespace-nowrap px-4 py-2 text-gray-700">
                                     <?php echo $row->jenis_pembayaran ?></td>
